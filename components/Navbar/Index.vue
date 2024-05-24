@@ -29,7 +29,7 @@ const actions = [
       </template>
       
     </div>
-    <div class="text-2xl font-bold">
+    <div class="text-2xl font-bold sm:block hidden">
       Country <span class="text-green-600">Finder</span>
     </div>
     <a href="/register" class="bg-green-800 p-2 rounded-lg font-bold">Junte-se</a>
