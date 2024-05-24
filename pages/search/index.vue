@@ -2,9 +2,13 @@
   import { ref } from "vue";
   import { debounce } from "lodash";
   import axios from "axios";
+import Loading from "~/components/general/Loading.vue";
 
   const searchName = ref("");
   const countries = ref();
+  const states = ref({
+    loading:true
+  });
   const modal = ref({
     props:{
       isOpen:false,
@@ -22,6 +26,7 @@
 
   async function search() {
     try {
+      states.value.loading = true
       const { data } = await axios.get(
         `https://restcountries.com/v3.1/name/${searchName.value}?fields=name,languages,cca2`
       );
@@ -30,6 +35,8 @@
     } catch (error) {
       countries.value = [];
     }
+    states.value.loading = false
+
   }
 </script>
 
@@ -52,7 +59,7 @@
     </form>
 
     <div class="flex flex-wrap gap-4 justify-center w-full">
-      <template v-for="(country, index) in countries" :key="index">
+      <template v-for="(country, index) in countries" :key="index" v-if="states.loading">
         <div class="bg-neutral-700 p-4 rounded-lg border border-white w-full max-w-80 sm:min-w-64">
           <div class="flex flex-col gap-4 justify-center h-full">
             <div class="flex gap-4 justify-between">
@@ -79,6 +86,7 @@
           </div>
         </div>
       </template>
+      <Loading v-else/>
 
       <UModal v-model="modal.props.isOpen" :ui="{}">
         <ModalContent :language="modal.props.language"/>
