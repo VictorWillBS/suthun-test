@@ -21,7 +21,6 @@
   ];
 
   async function fetchCountries() {
-    console.log("searching...");
     try {
       const { data } = await axios.get(`https://restcountries.com/v3.1/all?fields=name,capital`);
 
@@ -29,7 +28,6 @@
 
       return data;
     } catch (error) {
-      console.log(error);
       return [];
     }
   }
