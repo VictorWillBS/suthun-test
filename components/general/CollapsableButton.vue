@@ -28,7 +28,7 @@
     <UIcon :name="icon" dynamic :class="iconClass" />
 
     <div
-      class="w-full sm:max-w-0 overflow-hidden transition-all duration-500 delay-100 ease-in-out sm:group-hover:max-w-80 truncate group-hover:px-1"
+      class="w-full sm:max-w-0 overflow-hidden transition-all duration-500 delay-100 ease-in-out sm:group-hover:max-w-80 truncate group-hover:px-1 sm:block hidden"
     >
       {{ name }}
     </div>
