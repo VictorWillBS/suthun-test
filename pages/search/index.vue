@@ -80,8 +80,8 @@
         </div>
       </template>
 
-      <UModal v-model="modal.props.isOpen">
-        <ModalContent class="h-48" :language="modal.props.language"/>
+      <UModal v-model="modal.props.isOpen" :ui="{}">
+        <ModalContent :language="modal.props.language"/>
       </UModal>
     </div>
   </div>
